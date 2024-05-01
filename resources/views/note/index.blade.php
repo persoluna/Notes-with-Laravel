@@ -7,7 +7,7 @@
             @foreach ($notes as $note)
                 <div class="note">
                     <div class="note-body">
-                        {{ $note->note }}
+                        {{ Str::limit($note->note, 30) }}
                     </div>
                     <div class="note-buttons">
                         <a href="{{ route('note.show', $note) }}" class="note-edit-button">View</a>
