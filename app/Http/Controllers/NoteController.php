@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Rules\NoteRule;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -32,10 +33,10 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'note' => ['required', 'string'],
-        ]);
 
+        $data = $request->validate([
+            'note' => ['required', 'string', new NoteRule],
+        ]);
         $data['user_id'] = $request->user()->id;
         $note = Note::create($data);
 
@@ -73,7 +74,7 @@ class NoteController extends Controller
             abort(403);
         }
         $data = $request->validate([
-            'note' => ['required', 'string'],
+            'note' => ['required', 'string', new NoteRule],
         ]);
 
         $note->update($data);
