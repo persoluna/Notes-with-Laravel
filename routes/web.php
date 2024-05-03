@@ -1,10 +1,16 @@
 <?php
 
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
 Route::redirect('/', '/note')->name('dashboard');
+
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 Route::middleware(['auth', 'verified'])->group(function () {
 

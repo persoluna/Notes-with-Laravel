@@ -15,6 +15,18 @@
                     <x-nav-link :href="route('note.index')" :active="request()->routeIs('note.index')">
                         {{ __('Notes') }}
                     </x-nav-link>
+                    {{-- <x-nav-link :href="route('products')">
+                        {{ __('products') }}
+                    </x-nav-link> --}}
+                    <x-nav-link href="#section1">
+                        Your notes
+                    </x-nav-link>
+                    <x-nav-link href="#features">
+                        Why us?
+                    </x-nav-link>
+                    <x-nav-link href="#section2">
+                        Feedback
+                    </x-nav-link>
                 </div>
             </div>
 
